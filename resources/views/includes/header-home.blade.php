@@ -36,7 +36,7 @@
         
         <!-- Colors -->
         <link rel="alternate stylesheet" href="{{ asset('assets/css/colors/blue.css') }}" title="blue">
-        <link rel="stylesheet" href="assets/css/colors/defauld.css" title="defauld">
+        <link rel="stylesheet" href="{{ asset('assets/css/colors/defauld.css') }}" title="defauld">
         <link rel="alternate stylesheet" href="{{ asset('assets/css/colors/green.css') }}" title="green">
         <link rel="alternate stylesheet" href="{{ asset('assets/css/colors/blue-munsell.css') }}" title="blue-munsell">
         <link rel="alternate stylesheet" href="{{ asset('assets/css/colors/orange.css') }}" title="orange">

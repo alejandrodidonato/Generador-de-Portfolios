@@ -22,8 +22,7 @@
                                                 <h4
                                                 >Address</h4>
                                                 <address>
-                                                    5th Avenue, 34th floor, <br> 
-                                                     New york
+                                                    {{ $user->address }}
                                                 </address>
                                             </div>
                                         </div>
@@ -35,8 +34,7 @@
                                             </div>
                                             <div class="each-info media-body">
                                                 <h4>Email</h4>
-                                                <a href="mailto:yourmail@email.com">yourmail@email.com</a><br>
-                                                <a href="mailto:yourmail@email.com">yourmail@email.com</a>
+                                                <a href="mailto:yourmail@email.com"> {{ $user->email }}</a><br>
                                             </div>
                                         </div>
                                     </div>
@@ -47,8 +45,7 @@
                                             </div>
                                             <div class="each-info media-body">
                                                 <h4>Phone</h4>
-                                                <a href="callto:(880)-8976-987">(880)-8976-987</a><br>
-                                                <a href="callto:(880)-8976-987">(880)-8976-987</a>
+                                                <a href="callto:(880)-8976-987">{{ $user->tel }}</a><br>
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +130,7 @@
     <!-- Fancybox js-->
     <script src="{{ asset('assets/plugins/js/jquery.fancybox.min.js') }}"></script>
     <!-- Map api -->
-    <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyCRP2E3BhaVKYs7BvNytBNumU0MBmjhhxc"></script>
+    <script src="{{ asset('http://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyCRP2E3BhaVKYs7BvNytBNumU0MBmjhhxc') }}"></script>
     <!-- isotope js-->
     <script src="{{ asset('assets/plugins/js/isotope.pkgd.js') }}"></script>
     <script src="{{ asset('assets/plugins/js/packery-mode.pkgd.js') }}"></script>
