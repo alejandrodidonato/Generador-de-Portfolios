@@ -9,6 +9,13 @@ class ProfSkill extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name_profskill',
+        'user_id',
+        'percent'
+    ];
+
+
     public function user()
     {
         return $this->belongsTo(User::class);

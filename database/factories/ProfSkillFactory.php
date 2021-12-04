@@ -23,7 +23,7 @@ class ProfSkillFactory extends Factory
     {
         return [
             'user_id' => rand(1,5),
-            'name' => $this->faker->word,
+            'name_profskill' => $this->faker->word,
             'percent' => rand(1,100),
         ];
     }

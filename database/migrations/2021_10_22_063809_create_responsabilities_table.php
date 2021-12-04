@@ -17,6 +17,9 @@ class CreateResponsabilitiesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('work_id');
             $table->string('description')->nullable();
+
+            $table->foreign('work_id')->references('id')->on('works')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

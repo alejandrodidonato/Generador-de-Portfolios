@@ -20,6 +20,9 @@ class CreatePostsTable extends Migration
             $table->date('date')->nullable();
             $table->string('author')->nullable();
             $table->string('intro')->nullable();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

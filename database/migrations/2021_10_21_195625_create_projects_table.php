@@ -20,6 +20,9 @@ class CreateProjectsTable extends Migration
             $table->string('name')->nullable();
             $table->string('type')->nullable();
             $table->string('description')->nullable();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }

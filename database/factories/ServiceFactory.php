@@ -22,9 +22,10 @@ class ServiceFactory extends Factory
     public function definition()
     {
         return [
-        'name' => $this->faker->word,
-        'description' => $this->faker->text,
+        'name_service' => $this->faker->word,
+        'description_service' => $this->faker->text,
         'user_id' => rand(1,5),
+        'icon'=> $this->faker->randomElement(['bullseye' ,'code', 'object-ungroup']),
         ];
     }
 }

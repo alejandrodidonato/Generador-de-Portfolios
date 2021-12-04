@@ -16,8 +16,11 @@ class CreateProfSkillsTable extends Migration
         Schema::create('prof_skills', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('name');
+            $table->string('name_profskill');
             $table->integer('percent');
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }

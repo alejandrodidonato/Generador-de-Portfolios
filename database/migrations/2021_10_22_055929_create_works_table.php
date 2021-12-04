@@ -20,6 +20,9 @@ class CreateWorksTable extends Migration
             $table->string('company')->nullable();
             $table->year('start_date')->nullable();
             $table->year('finish_date')->nullable();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

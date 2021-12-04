@@ -175,6 +175,8 @@ Forms
 2. Remove the margin in Firefox and Safari.
 */
 
+
+
 button,
 input,
 optgroup,
@@ -184,6 +186,9 @@ textarea {
 	font-size: 100%; /* 1 */
 	line-height: 1.15; /* 1 */
 	margin: 0; /* 2 */
+	margin-top: 1rem !important;
+	margin-bottom: 1rem !important;
+
 }
 
 /**

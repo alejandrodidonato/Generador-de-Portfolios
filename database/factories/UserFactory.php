@@ -25,13 +25,22 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
+            'description' => $this->faker->word,
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'slug' => $this->faker->word,
             'about' => $this->faker->text,
+            'title_about' => $this->faker->sentence,
+            'title_services' => $this->faker->sentence,
+            'title_skills' => $this->faker->sentence,
+            'title_profskills' => $this->faker->sentence,
             'title_job' => $this->faker->text,
             'tel' => $this->faker->numerify('###-###-####'),
             'address' => $this->faker->address,
+            'facebook' => $this->faker->url(),
+            'twitter' => $this->faker->url(),
+            'github' => $this->faker->url(),
+            'dribbble' => $this->faker->url(),
             'excerpt' => $this->faker->text,
             'email_verified_at' => now(),
             'password' => '$2a$12$GN/q6/bSJIit1lOCXvVjaeb36PSqgv2U5I91fZ0zjPKzlsykCZgVW', // password

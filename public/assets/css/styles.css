@@ -499,7 +499,8 @@ ul {
   box-shadow: 0 0px 2px 0 rgba(255, 255, 255, 0.16), 0 0px 2px 0 rgba(255, 255, 255, 0.12);
   background-color: transparent;
   border-color: transparent;
-  margin-bottom: 20px;
+  margin-bottom: 1rem !important;
+  margin-top: 1rem !important;
   height: 50px;
   line-height: 50px; }
   .form-control:focus {
@@ -557,6 +558,12 @@ button {
 
 .round-image {
   border-radius: 50%; }
+
+  div.form-group
+  {
+    margin-bottom: 1rem !important;
+  margin-top: 1rem !important;
+  }
 
 .form-control {
   padding: 20px;

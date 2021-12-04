@@ -18,6 +18,9 @@ class CreateTestimonialsTable extends Migration
             $table->unsignedBigInteger('project_id');
             $table->string('name')->nullable();
             $table->string('quote')->nullable();
+
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

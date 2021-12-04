@@ -12,7 +12,7 @@
                         <div class="col-sm-6">
                             <div class="mh-header-info">
                                 <div class="mh-promo wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">
-                                    <span>Hello I'm</span>
+                                    <span>Hello I'm {{ $user->description }}</span>
                                 </div>
                                 
                                 <h2 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">{{ $user->name }}</h2>
@@ -20,22 +20,40 @@
                                 
                                 <ul>
                                     <li class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s"><i class="fa fa-envelope"></i><a href="mailto:">{{ $user->email }}</a></li>
-                                    <li class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.5s"><i class="fa fa-phone"></i><a href="callto:">{{ $user->tel }}</a></li>
+                                    @if ($user->tel)
+                                        <li class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.5s"><i class="fa fa-phone"></i><a href="callto:">{{ $user->tel }}</a></li>
+                                    @endif
+                                    @if ($user->address)
                                     <li class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s"><i class="fa fa-map-marker"></i><address>{{ $user->address }}</address></li>
+                                    @endif
                                 </ul>
                                 
                                 <ul class="social-icon wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.7s">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-github"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                    @if ($user->facebook)
+                                        <li><a href="{{ $user->facebook }}"><i class="fa fa-facebook"></i></a></li>
+                                    @endif
+                                    @if ($user->twitter)
+                                        <li><a href="{{ $user->twitter }}"><i class="fa fa-twitter"></i></a></li>
+                                    @endif
+                                    @if ($user->github)
+                                        <li><a href="{{ $user->github }}"><i class="fa fa-github"></i></a></li>
+                                    @endif
+                                    @if ($user->dribbble)
+                                        <li><a href="{{ $user->dribbble }}"><i class="fa fa-dribbble"></i></a></li>
+                                    @endif
+                                
                                 </ul>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="hero-img wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s">
                                 <div class="img-border">
-                                    <img src="{{ asset('assets/images/hero.png') }}" alt=""  class="img-fluid">
+                                    @if ($user->image)
+                                    <img src="{{ $user->get_image }}" alt="{{ $user->name }}"  class="img-fluid">
+                                    @else
+                                        <img src="{{ asset('assets/images/profile.jpg') }}" alt=""  class="img-fluid">
+                                    @endif
+                                   
                                 </div>
                             </div>
                         </div>
@@ -54,17 +72,26 @@
                 <div class="row section-separator">
                     <div class="col-sm-12 col-md-6">
                         <div class="mh-about-img shadow-2 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s">
-                            <img src="{{ asset('assets/images/ab-img.png') }}" alt="" class="img-fluid">
+                            @if ($user->image_about)
+                            <img src="{{ $user->get_image_about }}" alt="{{ $user->title_about }}" class="img-fluid">
+                            @else
+                                <img src="{{ asset('assets/images/ab-img.png') }}" alt=""  class="img-fluid">
+                             @endif
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6">
                         <div class="mh-about-inner">
-                            <h2 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">About Me</h2>
+                            @if ($user->title_about)
+                            <h2 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">{{ $user->title_about }}</h2>
+                                    @else
+                                    <h2 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">Sobre mi</h2>
+                                    @endif
+                            
                             <p class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">{{ $user->about }}</p>
                             <div class="mh-about-tag wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
                                 <ul>
                                     @foreach ($user->skill as $skill )
-                                        <li><span>{{ $skill->name }}</span></li>
+                                        <li><span>{{ $skill->name_skill }}</span></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -84,16 +111,20 @@
             <div class="container">
                 <div class="row section-separator">
                     <div class="col-sm-12 text-center section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                        <h2>What I do</h2>
+                        @if ($user->title_services)
+                                     <h2>{{ $user->title_services }}</h2>
+                                    @else
+                                    <h2> Servicios </h2>
+                                    @endif
                     </div>
                     @foreach ($user->service as $service)
                         
                     <div class="col-sm-4">
                         <div class="mh-service-item shadow-1 dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
-                            <i class="fa fa-bullseye purple-color"></i>
-                            <h3>{{ $service->name }}</h3>
+                            <i class="fa fa-{{ $service->icon }} purple-color"></i>
+                            <h3>{{ $service->name_service }}</h3>
                             <p>
-                                {{ $service->description }}
+                                {{ $service->description_service }}
                             </p>
                         </div>
                     </div>
@@ -170,7 +201,11 @@
                         <div class="col-sm-12 col-md-6">
                             <div class="mh-skills-inner">
                                 <div class="mh-professional-skill wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
-                                    <h3>Technical Skills</h3>
+                                    @if ($user->title_skills)
+                                     <h3>{{ $user->title_skills }}</h3>
+                                    @else
+                                    <h3> Habilidades </h3>
+                                    @endif
                                     <div class="each-skills">
                                         @foreach ($user->skill as $skill)
                                                 
@@ -179,7 +214,7 @@
                                            
                                             <div class="parcial">
                                                 <div class="info">
-                                                    <div class="nome">{{ $skill->name }}</div>
+                                                    <div class="nome">{{ $skill->name_skill }}</div>
                                                     <div class="percentagem-num">{{ $skill->percent}}%</div>
                                                 </div>
                                                 <div class="progressBar">
@@ -197,12 +232,16 @@
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <div class="mh-professional-skills wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.5s">
-                                <h3>Professional Skills</h3>
+                                    @if ($user->title_profskills)
+                                     <h3>{{ $user->title_profskills }}</h3>
+                                    @else
+                                    <h3> Habilidades Profesionales </h3>
+                                    @endif
                                 <ul class="mh-professional-progress">
                                     @foreach ($user->profskill as $profskill)                                     
                                     <li>
                                         <div class="mh-progress mh-progress-circle" data-progress="{{ $profskill->percent}}"></div>
-                                        <div class="pr-skill-name">{{ $profskill->name}}</div>
+                                        <div class="pr-skill-name">{{ $profskill->name_profskill}}</div>
                                     </li>
                                     @endforeach
                                 </ul>

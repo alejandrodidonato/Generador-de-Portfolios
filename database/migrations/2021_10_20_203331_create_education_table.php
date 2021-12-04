@@ -22,6 +22,8 @@ class CreateEducationTable extends Migration
             $table->year('finish_date')->nullable();
             $table->string('description')->nullable();
 
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
